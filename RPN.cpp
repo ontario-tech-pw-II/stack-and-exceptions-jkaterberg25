@@ -16,40 +16,61 @@ int main()
 
     cin >> in;
 
-    while(in != "q")
-    {
-        if(is_str_digit(in)){
-            // add your code here
-        }
-        else if(is_str_operator(in))
-        {
-            // add your code here 
+	while(in != "q")
+	{
+		if(is_str_digit(in)){
+			// add your code here
+			st.push(in);
+		}
+		else if(is_str_operator(in))
+		{
+			// add your code here 
+			int value1, value2, value3;
 
-            switch(in[0])
-            {
-                case '+':
-                    value3 = value2 + value1;
-                    break;
+			switch(in[0])
+			{
+				case '+':
+					value2 = stoi(st.top());
+					st.pop();
+					value1 = stoi(st.top());
+					st.pop();
+					value3 = value2 + value1;
+					st.push(to_string(value3));
+					break;
 
-                case '-':
-                    value3 = value2 - value1;
-                    break;
+				case '-':
+					value1 = stoi(st.top());
+					st.pop();
+					value2 = stoi(st.top());
+					st.pop();
+					value3 = value2 - value1;
+					st.push(to_string(value3));
+					break;
 
-                case '*':
-                    value3 = value2 * value1;
-                    break;
+				case '*':
+					value1 = stoi(st.top());
+					st.pop();
+					value2 = stoi(st.top());
+					st.pop();
+					value3 = value2 * value1;
+					st.push(to_string(value3));
+					break;
 
-                case '/':
-                    value3 = value2 / value1;
-                    break;
+				case '/':
+					value1 = stoi(st.top());
+					st.pop();
+					value2 = stoi(st.top());
+					st.pop();
+					value3 = value2 / value1;
+					st.push(to_string(value3));
+					break;
+			}
 
-            }
+			// add your code here
 
-            // add your code here
-
-        }
-        cin >> in;
-    }
+		}
+		cin >> in;
+	}
 
     cout << "The answer is : " << st.top() << endl;
 
